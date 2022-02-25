@@ -2,6 +2,8 @@ import db from './db.mjs';
 import User from "./models/user.mjs";
 import Congty from "./models/congty.mjs";
 import PhongLas from "./models/phonglas.mjs";
+import Congtrinh from "./models/congtrinh.mjs";
+import Thinghiem from "./models/thinghiem.mjs";
 //Drop Table
 export async function mock() {
   await db.drop();
@@ -40,6 +42,23 @@ export async function mock() {
       dienthoai: "02837240483",
       fax: "028 3724 0473",
       truongphong: "Vũ Văn Lịch"
+    }
+  ])
+
+  const congtrinh = await Congtrinh.bulkCreate([
+    {
+      ten: "Sửa chữa, nâng cấp kênh Tây thuộc hệ thống thủy lợi Dầu Tiếng",
+      diadiem: "Gồm các huyện Dương Minh Châu, Tân Biên, Châu Thành và thành phố Tây Ninh, tỉnh Tây Ninh",
+    }
+  ])
+
+  const thinghiem = await Thinghiem.bulkCreate([
+    {
+      congtrinh: 1,
+      donvitn: 1,
+      goithau: "Xây dựng hệ thống lan can hai bên bờ kênh Tây",
+      nhathau: 1,
+      giamsat: 3
     }
   ])
   
